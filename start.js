@@ -2,7 +2,7 @@
 
 const { Worker } = require('worker_threads');
 
-PORTS_NUMBER = 2;
+const PORTS_NUMBER = 2;
 
 const workers = [];
 for (let i = 0; i < PORTS_NUMBER; ++i)
