@@ -3,7 +3,9 @@
   "author": "With joy, the project structure was borrowed from 'Node.js Starter Kit',
   made up by Timur Shemsedinov.
   #metarhia #HowProgrammingWorks #NodeUA",
+
   "version": "1.0",
+  "description": "web application that helps users to find cats to pick up from the cat-shelter",
   "keywords": [
     "nodejs",
     "layered architecture",
