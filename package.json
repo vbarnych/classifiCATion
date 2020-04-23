@@ -1,11 +1,17 @@
 {
-  "name": "nodejsstarterkit",
+  "name": "classifiCATion",
+  "author": "With joy, the project structure was borrowed from 'Node.js Starter Kit',
+  made up by Timur Shemsedinov.
+  #metarhia #HowProgrammingWorks #NodeUA",
   "version": "1.0",
   "keywords": [
     "nodejs",
+    "layered architecture",
+    "nomiddlaware",
+    "isolation",
     "cats"
   ],
-  "main": "start.js",
+  "main": "mainThread.js",
   "dependencies": {
     "pg": "^7.18.2"
   },
