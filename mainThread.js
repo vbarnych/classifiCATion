@@ -18,3 +18,7 @@ process.on('SIGINT', async () => {
     workers[i].postMessage({ name: 'stop' });
   }
 });
+
+process.on('uncaughtException', error => {
+  console.log('Unhandled exception: ' + error);
+});
