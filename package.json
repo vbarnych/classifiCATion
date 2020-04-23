@@ -1,0 +1,15 @@
+{
+  "name": "nodejsstarterkit",
+  "version": "1.0",
+  "keywords": [
+    "nodejs",
+    "cats"
+  ],
+  "main": "start.js",
+  "dependencies": {
+    "pg": "^7.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vbarnych/classifiCATion.git"
+}

@@ -11,10 +11,14 @@ for (let i = 0; i < PORTS_NUMBER; ++i)
   workers.push(worker);
 }
 
-process.on('exit', async () => {
+process.on('SIGINT', async () => {
   console.log('Got exit signal');
   for (let i = 0; i < PORTS_NUMBER; ++i)
   {
-    worker.postMessage({ name: 'stop' });
+    workers[i].postMessage({ name: 'stop' });
   }
+});
+
+process.on('uncaughtException', error => {
+  console.log('Unhandled exception: ' + error);
 });
