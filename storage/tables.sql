@@ -1,4 +1,4 @@
-CREATE TABLE Cats ( Wool color Wool color coloration tail length wool length
+CREATE TABLE Cats (
   Id           serial,
   WoolColor    float,
   EyeColor     float,
