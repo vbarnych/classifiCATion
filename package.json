@@ -1,9 +1,6 @@
 {
   "name": "classifiCATion",
-  "author": "With joy, the project structure was borrowed from 'Node.js Starter Kit',
-  made up by Timur Shemsedinov.
-  #metarhia #HowProgrammingWorks #NodeUA",
-
+  "author": "With joy, the project structure was borrowed from 'Node.js Starter Kit', made up by Timur Shemsedinov. #metarhia #HowProgrammingWorks #NodeUA",
   "version": "1.0",
   "description": "web application that helps users to find cats to pick up from the cat-shelter",
   "keywords": [
@@ -15,9 +12,10 @@
   ],
   "main": "mainThread.js",
   "dependencies": {
-    "pg": "^7.18.2"
+    "pg": "^8.0.3"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vbarnych/classifiCATion.git"
+  }
 }
