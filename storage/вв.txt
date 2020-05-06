@@ -1,0 +1,45 @@
+SELECT Спеціальність FROM R11
+JOIN R12 ON R12.Обладнення = R11.Обладнення
+JOIN R13 ON R13.Кількість = R12.Кількість
+JOIN R3 ON R3. = R12.Кількість
+WHERE 
+
+SELECT Спеціальність FROM R11
+INNER JOIN R12 ON R12.Обладнання = R11.Обладнання
+INNER JOIN R6 ON R6.Кількість = R12.Кількість
+WHERE R6.Виріб = X AND R11.Спеціальність 
+NOT IN ( SELECT Спеціальність FROM R11
+INNER JOIN R12 ON R12.Обладнання = R11.Обладнання
+INNER JOIN R6 ON R6.Кількість = R12.Кількість
+WHERE R6.Виріб <> X )
+UNION
+SELECT Спеціальність FROM R11
+INNER JOIN R12 ON R12.Обладнання = R11.Обладнання
+INNER JOIN R6 ON R6.Кількість = R12.Кількість
+WHERE R6.Виріб = Y AND R11.Спеціальність 
+NOT IN ( SELECT Спеціальність FROM R11
+INNER JOIN R12 ON R12.Обладнання = R11.Обладнання
+INNER JOIN R6 ON R6.Кількість = R12.Кількість
+WHERE R6.Виріб <> Y )
+
+SELECT Виріб FROM R10
+INNER JOIN R9 ON R9.ТехнологічнийПроцес = R10.ТехнологічнийПроцес
+INNER JOIN R11 ON R11.Операція = R9.Операція
+INNER JOIN R9 ON R9.Операція = R11.Операція
+INNER JOIN R14 ON R14.Спеціальність = R11.Спеціальність
+WHERE (R14.Робітник = Х OR R14.Робітник = Y) AND R10.Виріб NOT IN (
+SELECT Виріб FROM R10
+INNER JOIN R9 ON R9.ТехнологічнийПроцес = R10.ТехнологічнийПроцес
+INNER JOIN R11 ON R11.Операція = R9.Операція
+INNER JOIN R9 ON R9.Операція = R11.Операція
+INNER JOIN R14 ON R14.Спеціальність = R11.Спеціальність
+WHERE (R14.Робітник = Х AND R14.Робітник = Y))
+
+
+
+
+SELECT Спеціальність FROM R11
+JOIN R9 ON R9.Операція = R11.Операція
+JOIN R10 ON R10.ТехнологічнийПроцес = R11.ТехнологічнийПроцес
+WHERE R10.Виріб = Y;
+
