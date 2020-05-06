@@ -27,3 +27,10 @@ const loadMethods = methods => {
   }
   return api;
 };
+
+
+
+const api = buildAPI([
+  'registration',
+  'signIn',
+]);
