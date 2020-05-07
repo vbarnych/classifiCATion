@@ -1,22 +1,11 @@
-'use strict';
-
-
-
-module.exports = async ({ login, password }) => {
-  // const user = await application.api.getUser(login);
-
-  db.select('SystemUsers', ['Id', 'Password'], { login })
-    .then(([user]) => user);
-
-  let hash = undefined;
-  if (!user)
-    throw new Error('Incorrect login');
-  else hash = user.password;
-
-  if (hash !== password)
-  {
-    throw new Error('Incorrect password');
-  }
+async ({ login, password }) => {
+  const where = { login, password };
+  //const id = await app.database.select('SystemUsers', ['Id'], where);
+  const [user] = await app.database.select(
+    'SystemUser', ['Password'], { login }
+  );
+    //console.log(id);
+  if (!id) throw new Error('Incorrect login or password');
   console.log(`Logged user: ${login}`);
   return { result: 'success', userId: user.id };
 }

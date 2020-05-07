@@ -21,7 +21,7 @@ const loadMethods = methods => {
         reject(new Error(`Status Code: ${status}`));
         return;
       }
-      resolve(res.json());
+      resolve(console.log(res.json()));
       });
     });
   }
@@ -30,7 +30,17 @@ const loadMethods = methods => {
 
 
 
-const api = buildAPI([
+const api = loadMethods([
   'registration',
   'signIn',
+  'getFullname',
 ]);
+
+const getProgram = async () => {
+  const id = await api.signIn({ login: 'jacquefresco', password: 'thevenusproject' });
+  const data = await api.getFullname();
+  const output = document.getElementById('output');
+  output.innerHTML = 'HTTP POST /api/signIn<br>' + JSON.stringify(id);
+};
+
+getProgram();
