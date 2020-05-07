@@ -20,5 +20,6 @@ process.on('SIGINT', async () => {
 });
 
 process.on('uncaughtException', error => {
-  console.log('Unhandled exception: ' + error);
+  console.log('Unhandled exception: ');
+  console.dir(error);
 });

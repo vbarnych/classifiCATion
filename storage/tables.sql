@@ -9,15 +9,15 @@ CREATE TABLE Cats (
 
 ALTER TABLE Cats ADD CONSTRAINT pkCats PRIMARY KEY (Id);
 
-CREATE TABLE SystemUser (
+CREATE TABLE SystemUsers (
   Id        serial,
   Login     varchar(64) NOT NULL,
   Password  varchar(255) NOT NULL,
   FullName  varchar(255)
 );
 
-ALTER TABLE SystemUser ADD CONSTRAINT pkSystemUser PRIMARY KEY (Id);
-CREATE UNIQUE INDEX akSystemUserLogin ON SystemUser (Login);
+ALTER TABLE SystemUsers ADD CONSTRAINT pkSystemUsers PRIMARY KEY (Id);
+CREATE UNIQUE INDEX akSystemUsersLogin ON SystemUsers (Login);
 
 CREATE TABLE EvaluatedCats (
   Id      serial,
@@ -27,5 +27,16 @@ CREATE TABLE EvaluatedCats (
 );
 
 ALTER TABLE EvaluatedCats ADD CONSTRAINT pkEvaluatedCats PRIMARY KEY (Id);
-ALTER TABLE EvaluatedCats ADD CONSTRAINT fkEvaluatedCatsUserId FOREIGN KEY (UserId) REFERENCES SystemUser (Id) ON DELETE CASCADE;
+ALTER TABLE EvaluatedCats ADD CONSTRAINT fkEvaluatedCatsUserId FOREIGN KEY (UserId) REFERENCES SystemUsers (Id) ON DELETE CASCADE;
 ALTER TABLE EvaluatedCats ADD CONSTRAINT fkEvaluatedCatsCatId FOREIGN KEY (CatId) REFERENCES Cats (Id) ON DELETE CASCADE;
+
+CREATE TABLE Sessions (
+  Id      serial,
+  UserId  integer NOT NULL,
+  Token   varchar(64) NOT NULL,
+  Data    text
+);
+
+ALTER TABLE Sessions ADD CONSTRAINT pkSessions PRIMARY KEY (Id);
+CREATE UNIQUE INDEX akSessions ON Sessions (Token);
+ALTER TABLE Sessions ADD CONSTRAINT fkSessionsUserId FOREIGN KEY (UserId) REFERENCES SystemUsers (Id) ON DELETE CASCADE;
