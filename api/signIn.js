@@ -4,5 +4,5 @@ async ({ login, password }) => {
   //const verified = await application.security.validatePassword(password, hash);
   if (!user) throw new Error('Incorrect login or password');
   console.log(`Logged user: ${login}`);
-  return { result: 'success', userId: user.id };
+  return { result: 'success', userId: user.id, fullname: user.fullname, };
 };

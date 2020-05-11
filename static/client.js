@@ -38,9 +38,9 @@ const api = loadMethods([
 
 const getProgram = async () => {
   const id = await api.signIn({ login: 'jacquefresco', password: 'thevenusproject' });
-  const data = await api.getFullname();
   const output = document.getElementById('output');
   output.innerHTML = 'HTTP POST /api/signIn<br>' + JSON.stringify(id);
+  const data = await api.getFullname();
 };
 
 getProgram();
