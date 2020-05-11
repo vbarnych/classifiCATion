@@ -1,9 +1,8 @@
 async ({ login, password }) => {
-  const where = { login, password };
-  const [user] = await app.database.select(
-    'SystemUsers', ['Password'], { login }
-  );
-  if (!id) throw new Error('Incorrect login or password');
+  const user = await app.sessions.getUser(login);
+  const hash = user ? user.password : undefined;
+  //const verified = await application.security.validatePassword(password, hash);
+  if (!user) throw new Error('Incorrect login or password');
   console.log(`Logged user: ${login}`);
-  return { result: 'success', userId: user.id };
-}
+  return { result: 'success', userId: user.id, fullname: user.fullname, };
+};
