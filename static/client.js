@@ -21,7 +21,7 @@ const loadMethods = methods => {
         reject(new Error(`Status Code: ${status}`));
         return;
       }
-      resolve(console.log(res.json()));
+      resolve(res.json());
       });
     });
   }
