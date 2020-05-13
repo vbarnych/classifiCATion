@@ -1,11 +1,7 @@
 'use strict';
 
-module.exports = async ({ login, password }) => {
-  const user = { login, password };
-  const queryResult = application.database
-    .insert('Users', user);
-  if (queryResult === false)
-  {
-    console.log('registration is failed');
-  }
+module.exports = async ({ login, password, fullname }) => {
+  const hash = await app.Crypto.hashPassword(password);
+  await app.sessions.registration(login, hash, fullname);
+  return { result: 'success' };
 };
