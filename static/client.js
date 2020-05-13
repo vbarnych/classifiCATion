@@ -45,6 +45,6 @@ const getProgram = async () => {
   const data = await api.getFullname();
   const output2 = document.getElementById('output2');
   output2.innerHTML = 'HTTP POST /api/fetFullname<br>' + JSON.stringify(data);
-};
+}
 
 getProgram();
