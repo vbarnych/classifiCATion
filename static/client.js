@@ -37,10 +37,14 @@ const api = loadMethods([
 ]);
 
 const getProgram = async () => {
-  const id = await api.signIn({ login: 'jacquefresco', password: 'thevenusproject' });
-  const output = document.getElementById('output');
-  output.innerHTML = 'HTTP POST /api/signIn<br>' + JSON.stringify(id);
+  const id = await api.signIn({ login: 'jacquefresco', password: 'fresco' });
+  console.dir(id);
+  const output1 = document.getElementById('output1');
+  output1.innerHTML = 'HTTP POST /api/signIn<br>' + JSON.stringify(id);
+
   const data = await api.getFullname();
+  const output2 = document.getElementById('output2');
+  output2.innerHTML = 'HTTP POST /api/fetFullname<br>' + JSON.stringify(data);
 };
 
 getProgram();

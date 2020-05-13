@@ -1,5 +1,5 @@
 async () => {
   const fields = ['Id', 'fullname'];
-  const data = await application.database.select('SystemUsers', fields);
+  const data = await app.database.select('SystemUsers', fields);
   return { result: 'success', data };
 };
