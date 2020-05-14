@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style src="style.css">
+        #page {
+        display: grid;
+        grid-row-gap: 7px;
+        grid-template-rows: 1fr 6fr;
+        grid-template-areas:
+            "hd"
+            "cnt"
+            ;
+        background-color: #96DBE8;
+        border : 7px solid #96DBE8;
+        height: 724px;
+        width: 1513px;
+        }
+
+        #header {
+    grid-area: hd;
+    border : 5px solid #00AEAD;
+    background-color: #00AEAD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content {
+    grid-area: cnt;
+    border : 5px solid #00AEAD;
+
+    background-color: #B8E4EF;
+
+}
+
+        #searchField {
+            height: 22px;
+            width: 500px;
+            border: 5px solid #99D9EA;
+
+        }
+
+
+    </style>
+    <script src="client.js"></script>
+</head>
+
+<body>
+
+    <div id="page">
+        <div id="header">
+            <a href="index.html">HOME</a>
+            <div id="headerMid">
+                <div id="searchField">
+                <input id="searchInput"type="search" style = "width : 93%">
+                <input type="submit" value="**">
+                </div>
+            </div>
+            <div>
+                <ul>
+                    <li><a href="profile.html">PROFILE</a></li>
+                    <li><a href="registration.html">REGISTRATION</a></li>
+                    <li><a href="login.html">LOGIN</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div id="content">HOME</div>
+    </div>
+
+
+</body>
+
+</html>
