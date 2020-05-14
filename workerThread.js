@@ -27,7 +27,6 @@ const Sessions = require('./lib/sessions.js');
     app.sessions.fillVMPool();
     console.log(`Application started in worker ${threadId}`);
   }, 200);
-//  this.server = new Server(units.serverConfig, this);
 
   worker.parentPort.on('message', async message => {
     if (message.name === 'stop') {
