@@ -1,6 +1,8 @@
 'use strict';
 
 const BASE = '/api/';
+const MIN = 1;
+const MAX = 60;
 
 const loadMethods = methods => {
   const api = {};
@@ -30,20 +32,25 @@ const loadMethods = methods => {
 
 const api = loadMethods([
   'signIn',
-  'getFullname',
+  'getCatInfo',
 ]);
+
+const recommendCats = async () => {
+  let cats = new Array(10);
+  for (let i = 0; i < 10; ++i)
+    cats[i] = getRandom(MIN, MAX);
+};
 
 const getRandom = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const getCats = async () => {
-  const id = await api.signIn();
+const getCat = async () => {
+  let catId = 3;
+  const id = await api.getCatInfo(catId);
   console.dir(id);
-  const output1 = document.getElementById('output1');
-  output1.innerHTML = 'HTTP POST /api/signIn<br>' + JSON.stringify(id);
 }
 
-login();
+getCat();
