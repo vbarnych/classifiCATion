@@ -28,16 +28,20 @@ const loadMethods = methods => {
   return api;
 };
 
-
-
 const api = loadMethods([
-  'registration',
   'signIn',
   'getFullname',
 ]);
 
-const getProgram = async () => {
-  const id = await api.signIn({ login: 'jacquefresco', password: 'fresco' });
+const login = async () => {
+
+  let user = {
+                login : document.getElementById("logLoginInput").value,
+                password : document.getElementById("logPasswordInput").value
+            };
+
+  console.dir(user);
+  const id = await api.signIn(user);
   console.dir(id);
   const output1 = document.getElementById('output1');
   output1.innerHTML = 'HTTP POST /api/signIn<br>' + JSON.stringify(id);
@@ -47,4 +51,4 @@ const getProgram = async () => {
   output2.innerHTML = 'HTTP POST /api/fetFullname<br>' + JSON.stringify(data);
 }
 
-getProgram();
+login();

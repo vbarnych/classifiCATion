@@ -22,6 +22,7 @@ const Sessions = require('./lib/sessions.js');
     app.database = new Database(units.databaseConfig, app);
     app.server = new Server(units.serverConfig, app);
     app.sessions = Sessions(app);
+    //console.dir(require);
     app.sandboxInject({ sessions: app.sessions });
     app.defaultSandbox = app.createSandbox();
     app.sessions.fillVMPool();
@@ -38,7 +39,7 @@ const Sessions = require('./lib/sessions.js');
   });
 
   const logError = err => {
-    console.dir(err.stack);
+    console.dir(err);
   };
 
   process.on('uncaughtException', logError);
