@@ -15,14 +15,12 @@ const Sessions = require('./lib/sessions.js');
   const configPath = path.join(PATH, 'config');
   const config = await new Config(configPath);
   const { units } = config;
-  //const logPath = path.join(PATH, 'log');
   const app = new App();
   Object.assign(app, { config });
-  setTimeout(()=>{
+  setTimeout(() => {
     app.database = new Database(units.databaseConfig, app);
     app.server = new Server(units.serverConfig, app);
     app.sessions = Sessions(app);
-    //console.dir(require);
     app.sandboxInject({ sessions: app.sessions });
     app.defaultSandbox = app.createSandbox();
     app.sessions.fillVMPool();
