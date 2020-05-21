@@ -41,14 +41,21 @@ const login = async () => {
             };
 
   console.dir(user);
-  const id = await api.signIn(user);
-  console.dir(id);
-  const output1 = document.getElementById('output1');
-  output1.innerHTML = 'HTTP POST /api/signIn<br>' + JSON.stringify(id);
+  const id = await api.signIn(user)
+  setTimeout(() => {
+    if (id.id !== null) {
+      console.log(1111);
+      document.location.href = 'http://localhost:8000/profile.html';
+    }
+    else
+    {
+      //document.location.href = 'http://localhost:8000/login.html'
+      console.log(2222)
+      document.getElementById('output').innerHTML = 'AAAAAA'
+    //  output.lastChild.value = "Incorrect login or password";
+    }
+    }, 200)
 
-  const data = await api.getFullname();
-  const output2 = document.getElementById('output2');
-  output2.innerHTML = 'HTTP POST /api/fetFullname<br>' + JSON.stringify(data);
 }
-
+//  document.location.href = 'http://localhost:8000/profile.html';
 login();

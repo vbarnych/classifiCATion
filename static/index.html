@@ -31,7 +31,61 @@
 
     background-color: #B8E4EF;
 
+
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "cd1 cd2 cd3 cd4 cd5"
+        "cd6 cd7 cd8 cd9 cd10"
+
 }
+
+        #catDiv1{
+            grid-area: cd1;
+            background-color: black;
+        }
+        #catDiv2{
+            grid-area: cd2;
+            background-color : blueviolet
+        }
+        #catDiv3{
+            grid-area: cd3;
+            background-color: red;
+        }
+        #catDiv4{
+            grid-area: cd4;
+            background-color: white;
+        }
+        #catDiv5{
+            grid-area: cd5;
+            background-color: blue;
+        }
+        #catDiv6{
+            grid-area: cd6;
+            background-color: green;
+        }
+        #catDiv7{
+            grid-area: cd7;
+            background-color: pink;
+        }
+        #catDiv8{
+            grid-area: cd8;
+            background-color: grey;
+        }
+        #catDiv9{
+            grid-area: cd9;
+            background-color: orange;
+        }
+        #catDiv10{
+            grid-area: cd10;
+            background-color: aqua;
+        }
+
+
+
 
         #searchField {
             height: 22px;
@@ -42,9 +96,8 @@
 
 
     </style>
-    <script src="client.js"></script>
-</head>
 
+</head>
 <body>
 
     <div id="page">
@@ -65,10 +118,23 @@
             </div>
 
         </div>
-        <div id="content">HOME</div>
+        <div id="content">
+
+            <div id="catDiv1"><a href="catpage.html"><img height="100px"></a></div>
+            <div id="catDiv2"><a href="catpage.html"><img height="100px"></a></div>
+            <div id="catDiv3"><a href="catpage.html"><img height="100px"></a></div>
+            <div id="catDiv4"><a href="catpage.html"><img height="100px"></a></div>
+            <div id="catDiv5"><a href="catpage.html"><img height="100px"></a></div>
+            <div id="catDiv6"><a href="catpage.html"><img height="100px"></a></div>
+            <div id="catDiv7"><a href="catpage.html"><img height="100px"></a></div>
+            <div id="catDiv8"><a href="catpage.html"><img height="100px"></a></div>
+            <div id="catDiv9"><a href="catpage.html"><img height="100px"></a></div>
+            <div id="catDiv10"><a href="catpage.html"><img height="100px"></a></div>
+
+
+        </div>
     </div>
-
-
+    <script src="index.js"></script>
 </body>
 
 </html>
