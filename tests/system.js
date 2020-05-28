@@ -6,10 +6,28 @@ const { Worker } = require('worker_threads');
 
 const worker = new Worker('../workerThread.js');
 
+const crypto = require('crypto');
+const TOKEN = 'token';
+const SEQ_LENGTH = 8;
+const ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+const DIGIT = '0123456789';
+const ALPHA_DIGIT = ALPHA + DIGIT;
+
 const HOST = '127.0.0.1';
 const PORT = 8000;
 const START_TIMEOUT = 1000;
 const TASKS_TIMEOUT = 3000;
+
+const generateSeq = () => {
+  const base = ALPHA_DIGIT.length;
+  const bytes = crypto.randomBytes(base);
+  let seq = '';
+  for (let i = 0; i < SEQ_LENGTH; i++) {
+    const index = ((bytes[i] * base) / BYTE) | 0;
+    seq += ALPHA_DIGIT[index];
+  }
+  return seq;
+};
 
 const MAIN = { get: '/', status: 302 }
 const SIGNIN = {
@@ -36,7 +54,6 @@ const tasks = [
   SIGNIN,
   REGISTR
 ];
-
 
 
 const getRequest = task => {
