@@ -49,13 +49,10 @@ const login = async () => {
     }
     else
     {
-      //document.location.href = 'http://localhost:8000/login.html'
       console.log(2222)
       document.getElementById('output').innerHTML = 'AAAAAA'
-    //  output.lastChild.value = "Incorrect login or password";
     }
     }, 200)
 
 }
-//  document.location.href = 'http://localhost:8000/profile.html';
 login();

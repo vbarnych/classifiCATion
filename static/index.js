@@ -2,8 +2,8 @@
 
 const BASE = '/api/';
 const BLOCKS_NUM = 10;
-
-let catIds = new Array(10);
+const AWS = 'https://catsstorage.s3.eu-central-1.amazonaws.com/'
+let cats = new Array(10);
 
 const getRandom = (min, max) => {
   min = Math.ceil(min);
@@ -12,7 +12,6 @@ const getRandom = (min, max) => {
 };
 
 (function () {
-const PICS_PATH = 'C:\\GitLab\\classifiCATion\\static\\cats\\';
   const isInArray = (key, arr) => {
       for (let i = 0; i < arr.length; i++) {
         if (arr[i] === key) {
@@ -24,24 +23,22 @@ const PICS_PATH = 'C:\\GitLab\\classifiCATion\\static\\cats\\';
   console.log(2)
 
   const tenCats = () => {
-    let rv = 0;
-    for (let i = 0; i < 10; i++){
+    let cat = 0;
+    for (let i = 0; i < 10; i++) {
       do {
-            rv = getRandom(1, 60);
+            cat = getRandom(1, 60);
           }
-          while (isInArray(rv, catIds));
-            catIds[i] = rv;
+          while (isInArray(cat, cats));
+            cats[i] = cat;
       }
-      return catIds;
   }
 
-    console.log(3)
-    catIds = tenCats();
-    console.log(catIds)
-    for (let i = 0; i < BLOCKS_NUM; i++) {
-      console.log('We are in this shit')
-      document.getElementById('catDiv' + 1).lastChild.lastChild.src =
-      'C:\\GitLab\\classifiCATion\\static\\cats\\10.jpg';
+    for (let i = 1; i <= BLOCKS_NUM; i++) {
+      const link = AWS + `${i}.jpg`;
+      document.getElementById("catDiv" + (i))
+          .lastChild
+          .lastChild
+          .src = link
     }
 
 }());
