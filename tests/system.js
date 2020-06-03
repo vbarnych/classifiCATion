@@ -1,17 +1,17 @@
 'use strict';
 
 const http = require('http');
+const crypto = require('crypto');
 const assert = require('assert').strict;
 const { Worker } = require('worker_threads');
 
-const worker = new Worker('../workerThread.js');
+const worker = new Worker('./workerThread.js');
 
-const crypto = require('crypto');
-const TOKEN = 'token';
 const SEQ_LENGTH = 8;
 const ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 const DIGIT = '0123456789';
 const ALPHA_DIGIT = ALPHA + DIGIT;
+const BYTE  = 256;
 
 const HOST = '127.0.0.1';
 const PORT = 8000;
@@ -36,13 +36,17 @@ const SIGNIN = {
 }
 const REGISTR = {
   post: '/api/registration',
-  data: { login: 'login', password: 'password' }
+  data: {
+          login: generateSeq(,
+          password: generateSeq(),
+          fullname: generateSeq()
+        }
 }
 
 console.log('System test started');
 setTimeout(async () => {
   worker.postMessage({ name: 'stop' });
-}, TEST_TIMEOUT);
+}, TASKS_TIMEOUT);
 
 worker.on('exit', () => {
   console.log('System test finished');
