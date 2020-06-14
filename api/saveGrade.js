@@ -1,10 +1,6 @@
-'use strict';
-
-
-
-module.exports = async ({ userId, catId, grade }) => {
+async ({ userId, catId, grade }) => {
   const record = { userId, catId, grade };
-  const queryResult = application.database
+  const queryResult = app.database
     .insert('EvaluatedCats', record);
   if (queryResult) return { result: 'success' };
 }
