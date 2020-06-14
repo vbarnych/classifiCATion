@@ -41,12 +41,6 @@ const login = async () => {
             };
 
   console.dir(user);
-
-
-
-
-
-
   const id = await api.signIn(user)
   setTimeout(() => {
     if (id.id !== null) {

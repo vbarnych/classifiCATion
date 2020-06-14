@@ -40,9 +40,71 @@
 
         }
 
+        #content>div{
+            display: flex;
+            flex-direction: row;
+        }
 
+
+        .mark{
+            width: 80px;
+            height: 40px;
+            border: 1px solid black;
+            border-radius: 40px;
+
+            outline: none;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            transition: all .4s ease;
+            font-size: 14px;
+            font-family: sans-serif;
+        }
+
+        .mark:active{
+            color: aqua;
+        }
+
+        #likeButton{
+            top: 30%;
+            left: 50%;
+            background-color: #78C073;
+        }
+
+        #dislikeButton{
+            top: 50%;
+            left: 50%;
+            background-color: #E84E5F;
+        }
+
+        #neutralButton{
+            top: 70%;
+            left: 50%;
+            background-color: gainsboro;
+        }
+
+
+        .mark:hover{
+            font-size: 15px;
+            width: 100px;
+            height: 60px;
+            box-shadow: 4px 4px grey;
+        }
     </style>
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
+
+
 <body>
 
     <div id="page">
@@ -65,15 +127,48 @@
         </div>
         <div id="content">
 
-            <div><p>NAME</p></div>
-            <div><p>COLOR</p></div>
-            <div><p>EYE COLOR</p></div>
-            <div><p>FLUFFY</p></div>
-            <div><p>TAIL LENGTH</p></div>
-            <div><p>TYPE OF COLLORING</p></div>
-            'Id', 'name', 'woolcolor', 'eyecolor',
-            'coloration', 'taillength', 'woollength'
-            <div><img src="" height="200px"></div>
+            <div>
+            <div><p>COLOR  : </p></div>
+            <div></div>
+            </div>
+
+             <div>
+            <div><p>EYE COLOR : </p></div>
+            <div></div>
+            </div>
+
+             <div>
+            <div><p>FLUFFY : </p></div>
+            <div></div>
+            </div>
+
+             <div>
+            <div><p>TAIL LENGTH : </p></div>
+            <div></div>
+            </div>
+
+            <div>
+            <div><p>TYPE OF COLLORING : </p></div>
+            <div></div>
+            </div>
+
+            <div></div>
+
+
+
+            <div>
+                <div><p>CURRENT MARK : </p></div>
+                <div id="currentMark"></div><br>
+                <form id="formA" onsubmit="return false">
+                    <p><input name="markCat" type="radio" value="like">LIKE</p>
+                    <p><input name="markCat" type="radio" value="dislike">DISLIKE</p>
+                    <p><input name="markCat" type="radio" value="neutral">NEUTRAL</p>
+                    <p><input name="markCat" type="radio" value="delete">DELETE PREVIOUS MARK</p>
+                    <p><input type="submit" value="Выбрать" onclick="getMark()"></p>
+                </form>
+
+            </div>
+
 
 
 
@@ -84,6 +179,55 @@
 
     <script>
 
+        let color = "RED";
+        let eyeColor = "GREEN";
+        let fluffy = "SHORT";
+        let tail = "SHORT";
+        let typeColor = "ONE COLOR";
+        let src = "C:\\Users\\User\\Desktop\\pasha.jpg";
+
+
+       document.getElementById("content").children[0].children[1].innerHTML = `<p style='margin-left: 15px;'>${color}</p>`
+       document.getElementById("content").children[1].children[1].innerHTML = `<p style='margin-left: 15px;'>${eyeColor}</p>`
+       document.getElementById("content").children[2].children[1].innerHTML = `<p style='margin-left: 15px;'>${fluffy}</p>`
+       document.getElementById("content").children[3].children[1].innerHTML = `<p style='margin-left: 15px;'>${tail}</p>`
+       document.getElementById("content").children[4].children[1].innerHTML = `<p style='margin-left: 15px;'>${typeColor}</p>`
+
+       document.getElementById("content").children[5].innerHTML = `<div><img src=${src} height="200px"></div>`
+
+
+      function getCurrentMark(){
+
+          let currentMark = "like"
+
+          let currentMarkDiv = document.getElementById("currentMark");
+          currentMarkDiv.innerHTML =  `<p style='margin-left: 15px;'>${currentMark}</p>`
+
+      }
+
+        getCurrentMark();
+
+
+       /*function getMark(e){
+
+
+
+           let radioForm = document.getElementById("formA");
+           const buttonsNumber = 4
+
+           for (let i = 0; i < buttonsNumber; i++){
+               if (radioForm.children[i].children[0].checked){
+                   console.log(i)
+               }
+
+           }*/
+
+
+
+           //console.log(radioForm);
+
+
+       }
 
 
 

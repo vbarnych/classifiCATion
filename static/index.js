@@ -3,45 +3,7 @@
 const BASE = '/api/';
 const BLOCKS_NUM = 10;
 const AWS = 'https://catsstorage.s3.eu-central-1.amazonaws.com/'
-let cats = new Array(10);
-
-const getRandom = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-(function () {
-  const isInArray = (key, arr) => {
-      for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === key) {
-          return true;
-        }
-      }
-    return false;
-  }
-  console.log(2)
-
-  const tenCats = () => {
-    let cat = 0;
-    for (let i = 0; i < 10; i++) {
-      do {
-            cat = getRandom(1, 60);
-          }
-          while (isInArray(cat, cats));
-            cats[i] = cat;
-      }
-  }
-
-    for (let i = 1; i <= BLOCKS_NUM; i++) {
-      const link = AWS + `${i}.jpg`;
-      document.getElementById("catDiv" + (i))
-          .lastChild
-          .lastChild
-          .src = link
-    }
-
-}());
+let catsIds = [];
 
 const loadMethods = methods => {
   const api = {};
@@ -72,18 +34,40 @@ const loadMethods = methods => {
 const api = loadMethods([
   'signIn',
   'getCatInfo',
+  'getCatIds'
 ]);
 
 const recommendCats = async () => {
-  let cats = new Array(10);
+  let cats = [];
   for (let i = 0; i < 10; ++i)
     cats[i] = getRandom(MIN, MAX);
 };
 
-const getCat = async () => {
-  let catId = 3;
-  const id = await api.getCatInfo(catId);
-  console.dir(id);
+const getCatsIds = async () => {
+  const data = await api.getCatIds();
+  console.log(data.catsIds);
+  return data.catsIds;
 }
 
-getCat();
+const scenario = async () => {
+  let catId = 7;
+  const id = await api.getCatInfo(catId);
+  console.log(id);
+  catsIds = await getCatsIds();
+  setTimeout(() => {
+    callback();
+  }, 500)
+}
+
+const callback = () => {
+  for (let i = 0; i <= 10; i++) {
+    const link = AWS + `${catsIds[i]}.jpg`;
+    document.getElementById(`catDiv${i+1}`).children[0].href = `catpage.html?catId=${catsIds[i]}`;
+    document.getElementById("catDiv" + (i+1))
+        .lastChild
+        .lastChild
+        .src = link
+  }
+}
+
+scenario();
