@@ -2,6 +2,9 @@
 
 const BASE = '/api/';
 const AWS = 'https://catsstorage.s3.eu-central-1.amazonaws.com/'
+const catId = Number((window.location.search).substring(7));
+console.log(catId);
+const src = AWS + `${catId}.jpg`;
 
 const loadMethods = methods => {
   const api = {};
@@ -31,27 +34,26 @@ const loadMethods = methods => {
 
 const api = loadMethods([
   'saveGrade',
-  'getCatInfo'
+  'getCatInfo',
+  'checkPreviousGrade'
 ]);
 
-    let color = "RED";
-    let eyeColor = "GREEN";
-    let fluffy = "SHORT";
-    let tail = "SHORT";
-    let typeColor = "ONE COLOR";
+let color = "RED";
+let eyeColor = "GREEN";
+let fluffy = "SHORT";
+let tail = "SHORT";
+let typeColor = "ONE COLOR";
 
-const getPhoto = () => {
-  const catId = Number((window.location.search).substring(7));
-  console.log(catId);
-  let src = AWS + `${catId}.jpg`;
-}
 
 const scenario = async () => {
-  const id = await api.saveGrade({catId: 3, grade: 1});
-  console.log(id);
+
+  //const id = await api.saveGrade({catId: 3, grade: 1});
+  //console.log(id);
+  const grade = await api.checkPreviousGrade({catId: catId})
+  console.dir(grade);
 }
 
-getPhoto();
+//getPhoto();
 scenario();
 
 
