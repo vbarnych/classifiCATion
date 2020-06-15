@@ -43,14 +43,18 @@ const login = async () => {
   console.dir(user);
   const id = await api.signIn(user)
       .catch(err => (err))
-      .then(document.getElementById('output')
-      .innerHTML = 'Invalid login or password!');
-      
+      .then(setTimeout(() => {
+        document.getElementById('output')
+                .innerHTML = 'Invalid login or password!'
+      }, 500));
+
+  document
+      .getElementById('output')
+      .innerHTML = 'Success!'
   if (id) {
     document
       .location
       .href = 'http://localhost:8000/profile.html';
   }
 }
-
 login();
