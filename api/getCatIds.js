@@ -20,7 +20,7 @@ async () => {
     let cat = 0;
     for (let i = 0; i < 10; i++) {
       do {
-            cat = getRandom(1, 60);
+            cat = getRandom(1, 200);
           }
           while (isInArray(cat, cats));
             cats[i] = cat;
@@ -28,6 +28,6 @@ async () => {
       return cats;
   };
 
-  const cats = new Array(11,2,3,4,53,6,7,8,9,10);
+  const cats = tenCats();
   return { catsIds: cats };
 };

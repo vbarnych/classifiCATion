@@ -8,7 +8,7 @@ const src = AWS + `${catId}.jpg`;
 let currentGrade = null;
 
 const GRADES = {
-  2: 'Dislike',
+  '-1': 'Dislike',
   0: 'Neutral',
   1: 'Like'
 };
