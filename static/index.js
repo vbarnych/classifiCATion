@@ -56,7 +56,7 @@ const scenario = async () => {
   catsIds = await getCatsIds();
   setTimeout(() => {
     callback();
-  }, 500)
+  }, 10)
 }
 
 const callback = () => {
