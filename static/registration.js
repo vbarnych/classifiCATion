@@ -44,8 +44,9 @@ const registr = async () => {
 
   const id = await api.registration(user);
   console.dir(id);
-  const output1 = document.getElementById('output1');
-  output1.innerHTML = 'HTTP POST /api/registration<br>' + JSON.stringify(id);
+  document
+    .location
+    .href = 'http://localhost:8000/index.html';
 }
 
 registr();

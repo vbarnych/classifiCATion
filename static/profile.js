@@ -32,25 +32,14 @@ const loadMethods = methods => {
 
 const api = loadMethods([
   'signIn',
-  'getCatInfo',
+  'getUserId',
 ]);
 
-const recommendCats = async () => {
-  let cats = new Array(10);
-  for (let i = 0; i < 10; ++i)
-    cats[i] = getRandom(MIN, MAX);
-};
-
-const getRandom = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
 
 const getCat = async () => {
-  let catId = 3;
-  const id = await api.getCatInfo(catId);
-  console.dir(id);
+  const data = api.getUserId();
+  document.getElementById('output')
+          .innerHTML = data;
 }
 
 getCat();
