@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="profile.js"></script>
-    <style src="style.css">
+    <style>
         #page {
         display: grid;
         grid-row-gap: 7px;
@@ -13,8 +12,8 @@
             ;
         background-color: #96DBE8;
         border : 7px solid #96DBE8;
-        height: 724px;
-        width: 1513px;
+        height: 670px;
+        width: 1470px;
         }
 
         #header {
@@ -30,9 +29,55 @@
     grid-area: cnt;
     border : 5px solid #00AEAD;
 
-    background-color: #B8E4EF;
+    background-color: #96DBE8;
+
+
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "cd1 cd2 cd3 cd7"
+        "cd4 cd5 cd6 cd7"
 
 }
+
+        #catDiv1{
+            grid-area: cd1;
+            justify-self: center;
+            background-color: black;
+        }
+        #catDiv2{
+            grid-area: cd2;
+            justify-self: center;
+            background-color : red;
+        }
+        #catDiv3{
+            grid-area: cd3;
+            justify-self: center;
+            background-color: blue;
+        }
+        #catDiv4{
+            grid-area: cd4;
+            justify-self: center;
+            background-color: #96DBE8;
+        }
+        #catDiv5{
+            grid-area: cd5;
+            justify-self: center;
+            background-color: #96DFE8;
+        }
+        #catDiv6{
+            grid-area: cd6;
+            justify-self: center;
+            background-color: #96DBE8;
+        }
+        #grades{
+            grid-area: cd7;
+            justify-self: center;
+            background-color: #96DFE8;
+        }
 
         #searchField {
             height: 22px;
@@ -44,20 +89,7 @@
 
     </style>
 
-
-
-
-
-
-
-
-
-
-
-
 </head>
-
-
 <body>
 
     <div id="page">
@@ -78,8 +110,18 @@
             </div>
 
         </div>
-        <div id="content"></div>
+        <div id="content">
+
+            <div id="catDiv1"><a href="catpage.html?blockId=2"><img height="250px"></a></div>
+            <div id="catDiv2"><a href="catpage.html?blockId=3"><img height="250px"></a></div>
+            <div id="catDiv3"><a href="catpage.html?catId=83"><img height="250x"></a></div>
+            <div id="catDiv4"><a href="catpage.html?blockId=5"><img height="250px"></a></div>
+            <div id="catDiv5"><a href="catpage.html?blockId=6"><img height="250px"></a></div>
+            <div id="catDiv6"><a href="catpage.html?blockId=7"><img height="250px"></a></div>
+            <div id="grades"><a href="catpage.html?blockId=8"><img height="250px"></a></div>
+        </div>
     </div>
+    <script src="profile.js"></script>
 
 
 </body>

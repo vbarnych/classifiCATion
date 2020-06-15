@@ -94,11 +94,11 @@ const getCurrentMark = async () => {
 
 }
 
-getCurrentMark();
+//getCurrentMark();
 
 const getMark = async () => {
   let radioForm = document.getElementById("formA");
-  const buttonsNumber = 4;
+  const buttonsNumber = 3;
 
   for (let i = 0; i < buttonsNumber; i++){
       if (radioForm.children[i].children[0].checked){

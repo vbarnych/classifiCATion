@@ -1,6 +1,6 @@
-async ({ userId, catId}) => {
-  const grade = await app
+async ({ userId }) => {
+  const data = await app
       .database
-      .select('EvaluatedCats', ['Grade'], { userId, catId })
-  return { result: 'success', grade };
+      .select('EvaluatedCats', ['Grade', 'CatId'], { userId })
+  return { result: 'success', data };
 }
