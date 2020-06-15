@@ -32,8 +32,6 @@ const loadMethods = methods => {
 };
 
 const api = loadMethods([
-  'signIn',
-  'getCatInfo',
   'getCatIds'
 ]);
 
@@ -50,9 +48,6 @@ const getCatsIds = async () => {
 }
 
 const scenario = async () => {
-  let catId = 7;
-  const id = await api.getCatInfo(catId);
-  console.log(id);
   catsIds = await getCatsIds();
   setTimeout(() => {
     callback();

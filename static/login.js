@@ -54,7 +54,7 @@ const login = async () => {
   if (id) {
     document
       .location
-      .href = 'http://localhost:8000/profile.html';
+      .href = 'http://localhost:8000/index.html';
   }
 }
 login();

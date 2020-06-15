@@ -11,8 +11,15 @@
     "cats"
   ],
   "main": "mainThread.js",
+  "license": "MIT",
   "dependencies": {
-    "pg": "^8.0.3"
+    "@tensorflow/tfjs": "^2.0.1",
+    "@tensorflow/tfjs-node": "^2.0.1",
+    "image-js": "^0.21.9",
+    "jimp": "^0.10.3",
+    "jpeg-js": "^0.3.7",
+    "pg": "^8.0.3",
+    "sharp": "^0.25.2"
   },
   "repository": {
     "type": "git",

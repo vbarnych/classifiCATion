@@ -7,10 +7,16 @@ console.log(catId);
 const src = AWS + `${catId}.jpg`;
 let currentGrade = null;
 
-const GRADES = {
+const GRADES_STRING = {
   '-1': 'Dislike',
   0: 'Neutral',
   1: 'Like'
+};
+
+const GRADES_DB = {
+  0: 1,
+  1: -1,
+  2: 0
 };
 
 const loadMethods = methods => {
@@ -81,30 +87,27 @@ const getCurrentMark = async () => {
 
   currentGrade = await api.checkPreviousGrade({catId: catId})
   console.dir(currentGrade);
-  console.log(GRADES[currentGrade.grade[0].grade]);
+  currentGrade = GRADES_STRING[currentGrade.grade[0].grade];
 
   let currentMarkDiv = document.getElementById("currentMark");
-  currentMarkDiv.innerHTML =  `<p style='margin-left: 15px;'>${GRADES[currentGrade.grade[0].grade]}</p>`
+  currentMarkDiv.innerHTML =  `<p style='margin-left: 15px;'>${currentGrade}</p>`
 
 }
 
-getCurrentMark();
+//getCurrentMark();
 
+const getMark = async () => {
+  let radioForm = document.getElementById("formA");
+  const buttonsNumber = 3;
 
-   /*function getMark(e){
+  for (let i = 0; i < buttonsNumber; i++){
+      if (radioForm.children[i].children[0].checked){
+          const gradeToDB = GRADES_DB[i];
+          console.log(gradeToDB);
+          const id = await api.saveGrade({catId: catId, grade: gradeToDB});
+          console.log(id);
+      }
+    }
+}
 
-
-
-       let radioForm = document.getElementById("formA");
-       const buttonsNumber = 4
-
-       for (let i = 0; i < buttonsNumber; i++){
-           if (radioForm.children[i].children[0].checked){
-               console.log(i)
-           }
-
-       }*/
-
-
-
-       //console.log(radioForm);
+getMark();
