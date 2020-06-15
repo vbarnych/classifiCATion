@@ -5,7 +5,7 @@ const crypto = require('crypto');
 const assert = require('assert').strict;
 const { Worker } = require('worker_threads');
 
-const worker = new Worker('./workerThread.js');
+const worker = new Worker('.\\workerThread.js');
 
 const SEQ_LENGTH = 8;
 const ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -29,19 +29,22 @@ const generateSeq = () => {
   return seq;
 };
 
-const MAIN = { get: '/', status: 302 }
-const SIGNIN = {
-  post: '/api/signIn',
-  data: { login: 'fresco', password: 'fresco' }
-}
-const REGISTR = {
-  post: '/api/registration',
-  data: {
-          login: generateSeq(,
-          password: generateSeq(),
-          fullname: generateSeq()
-        }
-}
+
+const tasks = [
+  { get: '/', status: 302 },
+  {
+    post: '/api/signIn',
+    data: { login: 'fresco', password: 'fresco' }
+  },
+  {
+    post: '/api/registration',
+    data: {
+            login: 'testLog',
+            password: 'testPass',
+            fullname: 'testName'
+          }
+  }
+];
 
 console.log('System test started');
 setTimeout(async () => {
@@ -52,12 +55,6 @@ worker.on('exit', () => {
   console.log('System test finished');
 });
 
-
-const tasks = [
-  MAIN,
-  SIGNIN,
-  REGISTR
-];
 
 
 const getRequest = task => {

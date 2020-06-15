@@ -1,8 +1,8 @@
 'use strict';
 
-const tests = ['config', 'database', 'crypto'];
+const tests = ['config', 'db', 'crypto'];
 
 for (const test of tests) {
   console.log(`Test unit: ${test}`);
-  require(`./unit.${test}.js`);
+  require(`..\\tests\\unit.${test}.js`);
 }

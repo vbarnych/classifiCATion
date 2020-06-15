@@ -13,8 +13,8 @@ crypto.hashPassword(truePassword).then(hash => {
   assert(hash);
   assert.equal(typeof hash, 'string');
   return Promise.all([
-    crypto.validatePassword(truePassword, hash),
-    crypto.validatePassword(falsePassword, hash),
+    crypto.checkPassword(truePassword, hash),
+    crypto.checkPassword(falsePassword, hash),
   ]);
 }).then(result => {
   assert.deepEqual(result, [true, false]);
