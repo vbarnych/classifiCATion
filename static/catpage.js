@@ -5,6 +5,13 @@ const AWS = 'https://catsstorage.s3.eu-central-1.amazonaws.com/'
 const catId = Number((window.location.search).substring(7));
 console.log(catId);
 const src = AWS + `${catId}.jpg`;
+let currentGrade = null;
+
+const GRADES = {
+  2: 'Dislike',
+  0: 'Neutral',
+  1: 'Like'
+};
 
 const loadMethods = methods => {
   const api = {};
@@ -38,6 +45,7 @@ const api = loadMethods([
   'checkPreviousGrade'
 ]);
 
+
 let color = "RED";
 let eyeColor = "GREEN";
 let fluffy = "SHORT";
@@ -49,8 +57,10 @@ const scenario = async () => {
 
   //const id = await api.saveGrade({catId: 3, grade: 1});
   //console.log(id);
-  const grade = await api.checkPreviousGrade({catId: catId})
-  console.dir(grade);
+
+  const catInfo = await api.getCatInfo(catId);
+  console.log(catInfo);
+
 }
 
 //getPhoto();
@@ -67,16 +77,18 @@ document.getElementById("content").children[4].children[1].innerHTML = `<p style
 document.getElementById("content").children[5].innerHTML = `<div><img src=${src} height="200px"></div>`
 
 
-  function getCurrentMark(){
+const getCurrentMark = async () => {
 
-      let currentMark = "like"
+  currentGrade = await api.checkPreviousGrade({catId: catId})
+  console.dir(currentGrade);
+  console.log(GRADES[currentGrade.grade[0].grade]);
 
-      let currentMarkDiv = document.getElementById("currentMark");
-      currentMarkDiv.innerHTML =  `<p style='margin-left: 15px;'>${currentMark}</p>`
+  let currentMarkDiv = document.getElementById("currentMark");
+  currentMarkDiv.innerHTML =  `<p style='margin-left: 15px;'>${GRADES[currentGrade.grade[0].grade]}</p>`
 
-  }
+}
 
-    getCurrentMark();
+getCurrentMark();
 
 
    /*function getMark(e){

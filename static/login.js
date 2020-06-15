@@ -41,18 +41,19 @@ const login = async () => {
             };
 
   console.dir(user);
-  const id = await api.signIn(user)
-  setTimeout(() => {
-    if (id.id !== null) {
+  try {
+    const id = await api.signIn(user).catch(err);
+
+    console.log(34444);
+    if (id) {
       console.log(1111);
       document.location.href = 'http://localhost:8000/profile.html';
+      return;
     }
-    else
-    {
-      console.log(2222)
-      document.getElementById('output').innerHTML = 'AAAAAA'
-    }
-    }, 200)
+  } catch (err) {
+    console.log(err);
+    document.getElementById('output').innerHTML = 'Invalid login or password!'
+  }
 
 }
 login();
