@@ -82,7 +82,7 @@ const recomendCats = async() => {
   const catsIds = data.data;
   for (let i = 1; i <= catsIds.length; i++) {
     const catId = catsIds[i-1];
-    document.getElementById(`catDiv${i}`).children[0].children[0].src = AWS + `${catId}.jpg`;
+    document.getElementById(`catDiv${i}`).children[0].src = AWS + `${catId}.jpg`;
   }
 }
 

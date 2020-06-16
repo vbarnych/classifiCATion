@@ -91,14 +91,11 @@ let data = new Array(3)
       recomendCatsIds.push(catsId[i].id);
     }
 
-  
+
     data[0] = recomendCatsIds[0]
     data[1] = recomendCatsIds[1]
     data[2] = recomendCatsIds[2]
 
-    // if (obj.eyecolor === eyeColor){
-    //   recomendCatsIds.push(obj);
-    // }
   }
 
 
