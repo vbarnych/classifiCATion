@@ -55,17 +55,14 @@ const api = loadMethods([
 let color = "RED";
 let eyeColor = "GREEN";
 let fluffy = "SHORT";
-let tail = "SHORT";
-let typeColor = "ONE COLOR";
 
 
 const scenario = async () => {
-
-  //const id = await api.saveGrade({catId: 3, grade: 1});
-  //console.log(id);
-
   const catInfo = await api.getCatInfo(catId);
   console.log(catInfo);
+  color = (catInfo.cat).color;
+  eyeColor = catInfo.cat.eyecolor;
+  fluffy = catInfo.cat.fluffy;
 
 }
 
@@ -74,13 +71,13 @@ scenario();
 
 
 
-document.getElementById("content").children[0].children[1].innerHTML = `<p style='margin-left: 15px;'>${color}</p>`
-document.getElementById("content").children[1].children[1].innerHTML = `<p style='margin-left: 15px;'>${eyeColor}</p>`
-document.getElementById("content").children[2].children[1].innerHTML = `<p style='margin-left: 15px;'>${fluffy}</p>`
-document.getElementById("content").children[3].children[1].innerHTML = `<p style='margin-left: 15px;'>${tail}</p>`
-document.getElementById("content").children[4].children[1].innerHTML = `<p style='margin-left: 15px;'>${typeColor}</p>`
+setTimeout(() => {
+  document.getElementById("content").children[0].children[1].innerHTML = `<p style='margin-left: 15px;'>${color}</p>`
+  document.getElementById("content").children[1].children[1].innerHTML = `<p style='margin-left: 15px;'>${eyeColor}</p>`
+  document.getElementById("content").children[2].children[1].innerHTML = `<p style='margin-left: 15px;'>${fluffy}</p>`
 
-document.getElementById("content").children[5].innerHTML = `<div><img src=${src} height="200px"></div>`
+  document.getElementById("content").children[3].innerHTML = `<div><img src=${src} height="200px"></div>`
+}, 1000)
 
 
 const getCurrentMark = async () => {
@@ -94,7 +91,6 @@ const getCurrentMark = async () => {
 
 }
 
-//getCurrentMark();
 
 const getMark = async () => {
   let radioForm = document.getElementById("formA");
