@@ -2,7 +2,7 @@
 
 //const { Worker } = require('worker_threads');
 
-const PORTS_NUMBER = 2;
+const PORTS_NUMBER = 1;
 
 //const workers = [];
 const { Worker } = require('worker_threads');

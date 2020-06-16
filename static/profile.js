@@ -4,6 +4,9 @@ const BASE = '/api/';
 const MIN = 1;
 const MAX = 60;
 
+const AWS = 'https://catsstorage.s3.eu-central-1.amazonaws.com/'
+
+
 const GRADES = {
   '-1': 1,
   0: 2,
@@ -43,13 +46,15 @@ const loadMethods = methods => {
 };
 
 const api = loadMethods([
-  'checkPreviousGrade'
+  'checkPreviousGrade',
+  'getRecommendations'
 ]);
 
 
 const getCurrentGrades = async () => {
 
   const userGrades = await api.checkPreviousGrade()
+
   console.dir(userGrades);
   let grades = document.getElementById("grades");
 
@@ -67,9 +72,23 @@ const getCurrentGrades = async () => {
     const br = document.createElement('br');
     grades.appendChild(grade);
     grades.appendChild(br);
+
   }
 }
 
-getCurrentGrades();
 
-//getCat();
+const recomendCats = async() => {
+  const data = await api.getRecommendations();
+  const catsIds = data.data;
+  for (let i = 1; i <= catsIds.length; i++) {
+    const catId = catsIds[i-1];
+    document.getElementById(`catDiv${i}`).children[0].children[0].src = AWS + `${catId}.jpg`;
+  }
+}
+
+
+
+(async () => {
+    await getCurrentGrades();
+    await recomendCats();
+})();
