@@ -13,8 +13,8 @@
   "main": "mainThread.js",
   "license": "MIT",
   "dependencies": {
-    "@tensorflow/tfjs": "^2.0.1",
-    "@tensorflow/tfjs-node": "^2.0.1",
+    "@tensorflow/tfjs": "^2.8.6",
+    "@tensorflow/tfjs-node": "^2.8.6",
     "image-js": "^0.21.9",
     "jimp": "^0.10.3",
     "jpeg-js": "^0.3.7",
